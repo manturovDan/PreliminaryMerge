@@ -31,6 +31,15 @@
       <version>${teamcity-version}</version>
       <scope>test</scope>
     </dependency>
+
+
+    <dependency>
+      <groupId>org.jetbrains.teamcity.internal</groupId>
+      <artifactId>server</artifactId>
+      <version>${teamcity-version}</version>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
