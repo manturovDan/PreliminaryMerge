@@ -16,30 +16,28 @@ public class PreliminaryMergeManagerImpl implements PreliminaryMergeManager, Rep
   }
 
   public PreliminaryMergeManagerImpl(@NotNull final EventDispatcher<RepositoryStateListener> repositoryStateEvents) {
-    printTmp("PMM was created");
-
+    printTmp("PM2M was created");
     repositoryStateEvents.addListener(this);
   }
 
   public String branchRevisionsToString(Map<String, String> revs) {
     StringBuilder revisions = new StringBuilder();
-    revs.forEach((key, value) -> revisions.append("\n{").append(key).append(":").append(value).append("\n}\n"));
-    return revs.toString();
+    revs.forEach((key, value) -> revisions.append("\n{\n\t").append(key).append(" : ").append(value).append("\n}"));
+    return revisions.append("\n").toString();
   }
 
   @Override
   public void beforeRepositoryStateUpdate(@NotNull VcsRoot root, @NotNull RepositoryState oldState, @NotNull RepositoryState newState) {
-    printTmp("PM: Catched commit (before): " +
-             branchRevisionsToString(oldState.getBranchRevisions()) +
-             " > " +
-             branchRevisionsToString(newState.getBranchRevisions()));
+
   }
 
   @Override
   public void repositoryStateChanged(@NotNull VcsRoot root, @NotNull RepositoryState oldState, @NotNull RepositoryState newState) {
-    printTmp("PM: Catched commit (after): " +
+    printTmp("PM2: Catched commit (after): " +
              branchRevisionsToString(oldState.getBranchRevisions()) +
              " > " +
              branchRevisionsToString(newState.getBranchRevisions()));
+
+
   }
 }
